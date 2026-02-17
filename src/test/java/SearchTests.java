@@ -3,7 +3,8 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-public class 123SearchTests {
+public class SearchTests {
+
     @Test
     void successfulSearchTest() {
         open("https://www.google.com/");
@@ -26,7 +27,4 @@ public class 123SearchTests {
         $("[id=searchbox_input]").setValue("QA.GURU").pressEnter();
         $("[data-testid=result]").shouldHave(text("Курсы Тестировщиков - Обучение Тестированию Онлайн С Нуля | Qa.guru"));
     }
-}
-
-void main() {
 }
