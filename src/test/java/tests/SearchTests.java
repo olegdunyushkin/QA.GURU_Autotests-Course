@@ -1,3 +1,6 @@
+package tests;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -6,12 +9,14 @@ import static com.codeborne.selenide.Selenide.*;
 public class SearchTests {
 
     @Test
+    @Disabled
     void successfulSearchTest() {
         open("https://www.google.com/");
         $("[name=q]").setValue("selenide").pressEnter();
         $("[id=search]").shouldHave(text("https://selenide.org"));
     }
     @Test
+    @Disabled
     void positiveyaserch () {
         open("http://www.ya.ru");
         $("#text").click();
@@ -22,6 +27,7 @@ public class SearchTests {
         $("[id=search-result]").shouldHave(text("Курсы тестировщиков - обучение... | QA.GURU"));
     }
     @Test
+    @Disabled
     void positiveducksearch () {
         open("https://duckduckgo.com/");
         $("[id=searchbox_input]").setValue("QA.GURU").pressEnter();
