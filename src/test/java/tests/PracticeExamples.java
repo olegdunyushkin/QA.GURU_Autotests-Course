@@ -1,8 +1,8 @@
-package tests.DemoQa;
+package tests;
 
 import org.junit.jupiter.api.*;
 
-public class AutomationPracticeForm {
+public class PracticeExamples {
 
     @BeforeAll
     static void firstConfig() {
