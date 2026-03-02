@@ -9,7 +9,7 @@ repositories {
 dependencies {
     testImplementation 'com.codeborne:selenide:7.14.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.14.2'
-    //testImplementation 'org.slf4j:slf4j-simple:2.0.9'
+    testImplementation 'org.slf4j:slf4j-simple:2.0.9'
     //testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
