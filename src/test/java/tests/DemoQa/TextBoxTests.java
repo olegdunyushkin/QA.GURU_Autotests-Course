@@ -3,13 +3,9 @@ package tests.DemoQa;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebElementCondition;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class TextBoxTests extends BaseTest { //Через extends подключили отдельный файл с сетапом, подключаем далее куда нужно
+public class TextBoxTests extends TestBase { //Через extends подключили отдельный файл с сетапом, подключаем далее куда нужно
 
     //@BeforeAll - мы вынесли его в отдельный файл, который подключаем. Но можем раскомитеть и будет тут, но если тестов станет много, то будет слишком массивно
     //static void beforeAll () {
@@ -21,7 +17,7 @@ public class TextBoxTests extends BaseTest { //Через extends подключ
     // Configuration.pageLoadStrategy = "eager"; Если плохо грузится или селенид капризничает, лучше таким не пользоваться
     // Configuration.timeout = "10000"; По дефолту 4 секунды, нужно вынести сюда чем каждому сувать слипы по 4секунды и тд,
     // те выносим в общее ожидание если нужно для все, или в частное если для какого то, но не суем в сам тест
-
+//}
     @Test
     void succesfullFormTest() {
         open("https://demoqa.com/text-box");

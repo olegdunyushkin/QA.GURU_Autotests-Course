@@ -6,11 +6,9 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
-import java.io.Closeable;
-
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
-public class BaseTest {
+public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
