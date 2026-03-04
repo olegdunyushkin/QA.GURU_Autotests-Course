@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -57,7 +58,7 @@ public class PracticeForm {
 
     @Test
     void lettersPhone () {
-        Configuration.baseUrl = "https://demoqa.com/automation-practice-form";
+        Configuration.baseUrl = "https://demoqa.com/automation-practice-form"; //Попробовал задать через конфигурацию, по хорошему ее выносим в отдельны файл, как делал в другой форме, и сюда просто ходим через / тк мы уже задали в конфигурации что является корнем
         open("/");
         $("[id=firstName]").setValue("Oleg");
         $("[id=lastName]").setValue("Dan");
@@ -68,6 +69,18 @@ public class PracticeForm {
         $("[id=userNumber]").shouldHave(cssValue("border-top-color", "rgba(220, 53, 69, 1)")); // Узнал что нет просто border-color, у рамки четыре стороны и у каждой может быть свой цвет, по этому нужно явное указание
     }
 
+    @Test
+    void maximumHappyPath () {
+        open("https://demoqa.com/automation-practice-form");
+        $("[id=firstName]").setValue("Anton");
+        $("[id=lastName]").setValue("Baton");
+        $("[id=userEmail]").setValue("ABN@mail.ru");
+        $("[id=gender-radio-1]").click();
+        $("[id=userEmail]").setValue("1234567890");
+        $("[id=dateOfBirthInput]").click();
+        $$("react-datepicker__month-container")
 
+        $("[id=hobbies-checkbox-1]").click();byCssSelector("April");
+    }
 }
 
