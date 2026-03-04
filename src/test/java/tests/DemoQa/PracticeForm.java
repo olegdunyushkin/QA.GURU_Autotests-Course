@@ -1,5 +1,6 @@
 package tests.DemoQa;
 
+import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
@@ -41,6 +42,32 @@ public class PracticeForm {
         $("[id=lastName]:invalid").shouldBe(visible);
         $("[id=userNumber]:invalid").shouldBe(visible);
     }
+
+    @Test
+    void wrongEmail () {
+        open("https://demoqa.com/automation-practice-form");
+        $("[id=firstName]").setValue("Imya");
+        $("[id=lastName]").setValue("Familya");
+        $("[id=gender-radio-2]").click();
+        $("[id=userNumber]").setValue("1234567890");
+        $("[id=userEmail]").setValue("228"); //Можно еще написать на проверку с сиволами в префиксе, без домена, очень длинное значение
+        $("[id=submit]").scrollTo().click();
+        $ ("[id=userEmail]:invalid").shouldBe(visible);
+    }
+
+    @Test
+    void lettersPhone () {
+        Configuration.baseUrl = "https://demoqa.com/automation-practice-form";
+        open("/");
+        $("[id=firstName]").setValue("Oleg");
+        $("[id=lastName]").setValue("Dan");
+        $("[id=gender-radio-3]").click();
+        $("[id=userNumber]").setValue("wwwwwwwwww");
+        $("[id=submit]").scrollTo().click();
+        $("[id=userNumber]:invalid").shouldBe(visible);
+        $("[id=userNumber]").shouldHave(cssValue("border-top-color", "rgba(220, 53, 69, 1)")); // Узнал что нет просто border-color, у рамки четыре стороны и у каждой может быть свой цвет, по этому нужно явное указание
+    }
+
 
 }
 
