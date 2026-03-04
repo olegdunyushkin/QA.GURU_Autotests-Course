@@ -2,7 +2,7 @@ package tests.DemoQa;
 
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -28,6 +28,18 @@ public class PracticeForm {
         $(byText("Practice Form")).click();
         $(".text-center").shouldHave(text("Practice Form"));
         //Можно поставить в шапку теста, если нужно именно перейти с самого начала на нужную форму
+    }
+
+    @Test
+    void noFields () {
+        open("https://demoqa.com/automation-practice-form");
+        $("[id=submit]").scrollTo().click();
+        $("[id=userForm]").shouldHave(cssClass("was-validated"));
+        //$("[id=firstName]").shouldHave(cssValue("border-color", "rgb(220, 53, 69)")); мы можем завязаться на то что форма окрасилась в красный цвет (красная рамка)
+        //Либо на то что у формы не меняется класс, но меняется стиль который к ней применяется (оба пункта, тот что выше и этот лежат в дев тулз в стилях)
+        $("[id=firstName]:invalid").shouldBe(visible);
+        $("[id=lastName]:invalid").shouldBe(visible);
+        $("[id=userNumber]:invalid").shouldBe(visible);
     }
 
 }
