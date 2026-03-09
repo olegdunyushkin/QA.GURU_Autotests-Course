@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeForm {
 
@@ -71,16 +70,48 @@ public class PracticeForm {
 
     @Test
     void maximumHappyPath () {
+        Configuration.browserSize = "1920x1080";
+        Configuration.pageLoadStrategy = "eager";
+        Configuration.browser = "chrome";
+
         open("https://demoqa.com/automation-practice-form");
         $("[id=firstName]").setValue("Anton");
         $("[id=lastName]").setValue("Baton");
         $("[id=userEmail]").setValue("ABN@mail.ru");
-        $("[id=gender-radio-1]").click();
-        $("[id=userEmail]").setValue("1234567890");
-        $("[id=dateOfBirthInput]").click();
-        $$("react-datepicker__month-container")
+        $("[for=gender-radio-1]").click();
+        $("[id=userNumber]").setValue("1234567890");
 
-        $("[id=hobbies-checkbox-1]").click();byCssSelector("April");
+        $("[id=dateOfBirthInput]").click();
+        $("[class=react-datepicker__month-select]").selectOption("October");
+        $(".react-datepicker__year-select").selectOption("2000");       //class можно сократить в виде .
+        $(".react-datepicker__day--011").click();
+        $("#subjectsInput").setValue("Maths").pressEnter();
+        $("[for=hobbies-checkbox-1]").click();
+        $("[for=hobbies-checkbox-2]").click();
+        $("[for=hobbies-checkbox-3]").click();
+        $("#uploadPicture").uploadFromClasspath("1.jpg");
+        $("#currentAddress").setValue("SPB, Deb. 4 v 3");
+
+        $("#state").scrollTo().click();
+        $(byText("NCR")).click();
+        $("#city").click();
+        $(byText("Delhi")).click();
+
+        $("#submit").scrollTo().click();
+
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+        $(".table-responsive").shouldHave(text("Anton Baton"));
+        $(".table-responsive").shouldHave(text("ABN@mail.ru"));
+        $(".table-responsive").shouldHave(text("Male"));
+        $(".table-responsive").shouldHave(text("1234567890"));
+        $(".table-responsive").shouldHave(text("11 October,2000")); // Сайт склеивает дату именно так
+        $(".table-responsive").shouldHave(text("Maths")); // Если ты исправил Games на Maths
+        $(".table-responsive").shouldHave(text("Sports, Reading, Music")); // Хобби выводятся через запятую
+        $(".table-responsive").shouldHave(text("1.jpg"));
+        $(".table-responsive").shouldHave(text("SPB, Deb. 4 v 3"));
+        $(".table-responsive").shouldHave(text("NCR Delhi"));
+
+        $("#closeLargeModal").click();
     }
 }
 
