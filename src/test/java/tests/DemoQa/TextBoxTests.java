@@ -19,7 +19,7 @@ public class TextBoxTests extends TestBase { //Через extends подключ
     // те выносим в общее ожидание если нужно для все, или в частное если для какого то, но не суем в сам тест
 //}
     @Test
-    void succesfullFormTest() {
+    void successfulFormTest() {
         open("https://demoqa.com/text-box");
         $("[id=userName]").setValue("Imya");
         $("[id=userEmail]").setValue("pochta@mail.ru");
