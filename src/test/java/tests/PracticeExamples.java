@@ -10,17 +10,18 @@ public class PracticeExamples {
     }
 
     @AfterAll
-    static void end () {
+    static void end() {
         System.out.println("Vse!");
 
     }
+
     @BeforeEach
-    void startBrowser () {
+    void startBrowser() {
         System.out.println("Browser Poehal");
     }
 
     @AfterEach
-    void closeBrowser () {
+    void closeBrowser() {
         System.out.println("Zakrili browser");
     }
 

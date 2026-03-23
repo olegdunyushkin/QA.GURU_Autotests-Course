@@ -15,9 +15,10 @@ public class SearchTests {
         $("[name=q]").setValue("selenide").pressEnter();
         $("[id=search]").shouldHave(text("https://selenide.org"));
     }
+
     @Test
     @Disabled
-    void positiveyaserch () {
+    void positiveyaserch() {
         open("http://www.ya.ru");
         $("#text").click();
         $("#text").setValue("QA.GURU").pressEnter();
@@ -26,9 +27,10 @@ public class SearchTests {
         sleep(2000);
         $("[id=search-result]").shouldHave(text("Курсы тестировщиков - обучение... | QA.GURU"));
     }
+
     @Test
     @Disabled
-    void positiveducksearch () {
+    void positiveducksearch() {
         open("https://duckduckgo.com/");
         $("[id=searchbox_input]").setValue("QA.GURU").pressEnter();
         $("[data-testid=result]").shouldHave(text("Курсы Тестировщиков - Обучение Тестированию Онлайн С Нуля | Qa.guru"));
