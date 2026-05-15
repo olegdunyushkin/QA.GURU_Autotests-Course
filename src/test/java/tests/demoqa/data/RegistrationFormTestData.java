@@ -3,8 +3,11 @@ package tests.demoqa.data;
 import net.datafaker.Faker;
 import tests.demoqa.utils.AdditionalRandomUtilities;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class RegistrationFormTestData {
@@ -30,9 +33,10 @@ public class RegistrationFormTestData {
     public final String invalidPhone = "wwwwwwwwww";
 
     public final String gender = randomUtils.getRandomGender();
-    public final String birthDay = "11";
-    public final String birthMonth = "October";
-    public final String birthYear = "2000";
+    public final LocalDate birthDate = faker.timeAndDate().birthday(18, 99);
+    public final String birthDay = birthDate.format(DateTimeFormatter.ofPattern("dd"));
+    public final String birthMonth = birthDate.format(DateTimeFormatter.ofPattern("MMMM", Locale.ENGLISH));
+    public final String birthYear = String.valueOf(birthDate.getYear());
 
     public final String subject = randomUtils.getRandomSubject();
     public final List<String> hobbies = List.of(randomUtils.getRandomHobby());

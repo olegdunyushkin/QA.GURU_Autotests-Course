@@ -31,16 +31,12 @@ public class AdditionalRandomUtilities {
     }
 
     public String getRandomCityForState(String state) {
-        if (state.equals("NCR")) {
-            return faker.options().option("Delhi", "Gurgaon", "Noida");
-        } else if (state.equals("Uttar Pradesh")) {
-            return faker.options().option("Agra", "Lucknow", "Merrut");
-        } else if (state.equals("Haryana")) {
-            return faker.options().option("Karnal", "Panipat");
-        } else if (state.equals("Rajasthan")) {
-            return faker.options().option("Jaipur", "Jaiselmer");
-        }
-
-        return "Delhi";
+        return switch (state) {
+            case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
+            case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
+            case "Haryana" -> faker.options().option("Karnal", "Panipat");
+            case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
+            default -> "Delhi";
+        };
     }
 }
