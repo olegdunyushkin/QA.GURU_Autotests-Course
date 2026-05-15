@@ -67,7 +67,7 @@ public class RegistrationFormTests extends TestBase {
                 .setFirstName(testData.firstName)
                 .setLastName(testData.lastName)
                 .setEmail(testData.email)
-                .selectGender(testData.maleGender)
+                .selectGender(testData.gender)
                 .setPhone(testData.phone)
                 .setBirthDate(testData.birthDay, testData.birthMonth, testData.birthYear)
                 .setSubject(testData.subject)
