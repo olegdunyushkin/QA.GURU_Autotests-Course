@@ -19,5 +19,11 @@ tasks.withType(JavaCompile) {
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        def tags = System.getProperty('tags')
+
+        if (tags) {
+            includeTags tags.split(',')
+        }
+    }
 }

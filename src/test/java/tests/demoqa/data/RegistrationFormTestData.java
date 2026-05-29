@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class RegistrationFormTestData {
 
-    private final Faker faker = new Faker();
+    private final Faker faker;
     private final AdditionalRandomUtilities randomUtils = new AdditionalRandomUtilities();
 
     public final String formTitle = "Practice Form";
@@ -24,27 +24,55 @@ public class RegistrationFormTestData {
     public final String femaleGender = "Female";
     public final String otherGender = "Other";
 
-    public final String firstName = faker.name().firstName();
-    public final String lastName = faker.name().lastName();
-    public final String email = faker.internet().emailAddress();
-    public final String invalidEmail = faker.number().digits(3);
+    public final String firstName;
+    public final String lastName;
+    public final String email;
+    public final String invalidEmail;
 
-    public final String phone = faker.phoneNumber().subscriberNumber(10);
+    public final String phone;
     public final String invalidPhone = "wwwwwwwwww";
 
-    public final String gender = randomUtils.getRandomGender();
-    public final LocalDate birthDate = faker.timeAndDate().birthday(18, 99);
-    public final String birthDay = birthDate.format(DateTimeFormatter.ofPattern("dd"));
-    public final String birthMonth = birthDate.format(DateTimeFormatter.ofPattern("MMMM", Locale.ENGLISH));
-    public final String birthYear = String.valueOf(birthDate.getYear());
+    public final String gender;
+    public final LocalDate birthDate;
+    public final String birthDay;
+    public final String birthMonth;
+    public final String birthYear;
 
-    public final String subject = randomUtils.getRandomSubject();
-    public final List<String> hobbies = List.of(randomUtils.getRandomHobby());
+    public final String subject;
+    public final List<String> hobbies;
     public final String picturePath = "1.jpg";
-    public final String currentAddress = faker.address().streetAddress();
+    public final String currentAddress;
 
-    public final String state = randomUtils.getRandomState();
-    public final String city = randomUtils.getRandomCityForState(state);
+    public final String state;
+    public final String city;
+
+    public RegistrationFormTestData() {
+        this(Locale.ENGLISH);
+    }
+
+    public RegistrationFormTestData(Locale locale) {
+        faker = new Faker(locale);
+
+        firstName = faker.name().firstName();
+        lastName = faker.name().lastName();
+        email = faker.internet().emailAddress();
+        invalidEmail = faker.number().digits(3);
+
+        phone = faker.phoneNumber().subscriberNumber(10);
+
+        gender = randomUtils.getRandomGender();
+        birthDate = faker.timeAndDate().birthday(18, 99);
+        birthDay = birthDate.format(DateTimeFormatter.ofPattern("dd"));
+        birthMonth = birthDate.format(DateTimeFormatter.ofPattern("MMMM", Locale.ENGLISH));
+        birthYear = String.valueOf(birthDate.getYear());
+
+        subject = randomUtils.getRandomSubject();
+        hobbies = List.of(randomUtils.getRandomHobby());
+        currentAddress = faker.address().streetAddress();
+
+        state = randomUtils.getRandomState();
+        city = randomUtils.getRandomCityForState(state);
+    }
 
     public String fullName() {
         return firstName + " " + lastName;
