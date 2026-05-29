@@ -1,8 +1,8 @@
-package tests.demoqa;
+package guru.qa.demoqa;
 
 import org.junit.jupiter.api.Test;
-import tests.demoqa.data.TextBoxTestData;
-import tests.demoqa.pages.TextBoxPage;
+import guru.qa.demoqa.data.TextBoxTestData;
+import guru.qa.demoqa.pages.TextBoxPage;
 
 public class TextBoxTests extends TestBase {
 

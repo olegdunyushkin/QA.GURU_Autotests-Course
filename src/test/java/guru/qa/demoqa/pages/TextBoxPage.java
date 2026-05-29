@@ -1,7 +1,7 @@
-package tests.demoqa.pages;
+package guru.qa.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import tests.demoqa.data.TextBoxTestData;
+import guru.qa.demoqa.data.TextBoxTestData;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;

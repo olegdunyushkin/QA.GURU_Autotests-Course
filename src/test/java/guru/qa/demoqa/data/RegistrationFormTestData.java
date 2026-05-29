@@ -1,7 +1,7 @@
-package tests.demoqa.data;
+package guru.qa.demoqa.data;
 
 import net.datafaker.Faker;
-import tests.demoqa.utils.AdditionalRandomUtilities;
+import guru.qa.demoqa.utils.AdditionalRandomUtilities;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

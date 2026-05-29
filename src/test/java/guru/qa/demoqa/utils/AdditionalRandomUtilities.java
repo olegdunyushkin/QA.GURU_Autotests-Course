@@ -1,4 +1,4 @@
-package tests.demoqa.utils;
+package guru.qa.demoqa.utils;
 
 import net.datafaker.Faker;
 

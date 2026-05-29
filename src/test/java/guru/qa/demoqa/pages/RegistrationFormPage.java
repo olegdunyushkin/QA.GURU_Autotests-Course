@@ -1,8 +1,8 @@
-package tests.demoqa.pages;
+package guru.qa.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import tests.demoqa.pages.components.CalendarComponent;
-import tests.demoqa.pages.components.ResultsTableComponent;
+import guru.qa.demoqa.pages.components.CalendarComponent;
+import guru.qa.demoqa.pages.components.ResultsTableComponent;
 
 import java.util.List;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package tests.demoqa;
+package guru.qa.demoqa;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterEach;

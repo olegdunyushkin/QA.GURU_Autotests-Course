@@ -1,4 +1,4 @@
-package tests.demoqa.data;
+package guru.qa.demoqa.data;
 
 public class TextBoxTestData {
 

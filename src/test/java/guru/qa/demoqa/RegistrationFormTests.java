@@ -1,4 +1,4 @@
-package tests.demoqa;
+package guru.qa.demoqa;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -9,9 +9,9 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
-import tests.demoqa.data.RegistrationFormTestData;
-import tests.demoqa.pages.MainPage;
-import tests.demoqa.pages.RegistrationFormPage;
+import guru.qa.demoqa.data.RegistrationFormTestData;
+import guru.qa.demoqa.pages.MainPage;
+import guru.qa.demoqa.pages.RegistrationFormPage;
 
 import java.util.Locale;
 import java.util.stream.Stream;
