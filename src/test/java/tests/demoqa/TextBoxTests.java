@@ -1,4 +1,4 @@
-package tests.DemoQa;
+package tests.demoqa;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
@@ -33,5 +33,4 @@ public class TextBoxTests extends TestBase { //Через extends подключ
         $("[id=output] [id=permanentAddress]").shouldHave(text("kv. 228"));
     }
 }
-
 
