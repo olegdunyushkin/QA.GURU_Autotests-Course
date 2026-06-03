@@ -1,0 +1,21 @@
+{
+  "orderId": "ORD-2026-0603",
+  "customer": {
+    "name": "Oleg",
+    "email": "oleg@example.com"
+  },
+  "items": [
+    {
+      "name": "Java automation course",
+      "price": 14990
+    },
+    {
+      "name": "Selenide stickers",
+      "price": 500
+    }
+  ],
+  "delivery": {
+    "city": "Moscow"
+  },
+  "paid": true
+}
