@@ -19,16 +19,21 @@ public class FilesParsingTests {
     private final ClassLoader classLoader = FilesParsingTests.class.getClassLoader();
 
     @Test
-    void zipFilesParsingTest() throws Exception {
+    void pdfFileParsingFromZipTest() throws Exception {
         byte[] pdfFile = readFileFromZip("order-summary.pdf");
         PDF pdf = new PDF(new ByteArrayInputStream(pdfFile));
+
         assertTrue(pdf.text.contains("QA.GURU Shop Order"));
         assertTrue(pdf.text.contains("ORD-2026-0603"));
         assertTrue(pdf.text.contains("Customer: Oleg"));
         assertTrue(pdf.text.contains("Total: 15990 RUB"));
+    }
 
+    @Test
+    void xlsxFileParsingFromZipTest() throws Exception {
         byte[] xlsxFile = readFileFromZip("order-items.xlsx");
         XLS xls = new XLS(new ByteArrayInputStream(xlsxFile));
+
         assertEquals("Product", xls.excel.getSheetAt(0).getRow(0).getCell(0).getStringCellValue());
         assertEquals("Java automation course", xls.excel.getSheetAt(0).getRow(1).getCell(0).getStringCellValue());
         assertEquals(1, xls.excel.getSheetAt(0).getRow(1).getCell(1).getNumericCellValue());
@@ -36,9 +41,13 @@ public class FilesParsingTests {
         assertEquals("Selenide stickers", xls.excel.getSheetAt(0).getRow(2).getCell(0).getStringCellValue());
         assertEquals(2, xls.excel.getSheetAt(0).getRow(2).getCell(1).getNumericCellValue());
         assertEquals(500, xls.excel.getSheetAt(0).getRow(2).getCell(2).getNumericCellValue());
+    }
 
+    @Test
+    void csvFileParsingFromZipTest() throws Exception {
         byte[] csvFile = readFileFromZip("order-report.csv");
         String csv = new String(csvFile, StandardCharsets.UTF_8);
+
         assertTrue(csv.contains("orderId,customer,total"));
         assertTrue(csv.contains("ORD-2026-0603,Oleg,15990"));
     }
@@ -74,7 +83,7 @@ public class FilesParsingTests {
             }
         }
 
-        throw new IllegalArgumentException("File not found in zip archive: " + fileName);
+        return fail("File not found in zip archive: " + fileName);
     }
 
     private InputStream getResourceAsStream(String resourceName) {
