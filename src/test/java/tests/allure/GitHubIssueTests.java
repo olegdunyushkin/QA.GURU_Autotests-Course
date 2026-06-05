@@ -1,5 +1,11 @@
 package tests.allure;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Link;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +15,10 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
+@Feature("Issues в репозитории")
+@Owner("Олег Дунюшкин")
+@Link(name = "Репозиторий qa_guru_14_10", url = "https://github.com/qa-guru/qa_guru_14_10")
+@DisplayName("Проверка Issue в репозитории GitHub")
 public class GitHubIssueTests extends AllureTestBase {
 
     private static final String REPOSITORY_URL = "https://github.com/qa-guru/qa_guru_14_10";
@@ -19,6 +29,9 @@ public class GitHubIssueTests extends AllureTestBase {
 
     @Test
     @DisplayName("Проверка названия Issue через чистый Selenide")
+    @Story("Проверка названия Issue")
+    @Severity(SeverityLevel.CRITICAL)
+    @Link(name = "Issue #2", url = "https://github.com/qa-guru/qa_guru_14_10/issues/2")
     void issueTitleShouldBeVisibleWithSelenideTest() {
         open(REPOSITORY_URL);
         $("#issues-tab").shouldBe(visible).click();
@@ -28,6 +41,9 @@ public class GitHubIssueTests extends AllureTestBase {
 
     @Test
     @DisplayName("Проверка названия Issue через лямбда-шаги")
+    @Story("Проверка названия Issue")
+    @Severity(SeverityLevel.CRITICAL)
+    @Link(name = "Issue #2", url = "https://github.com/qa-guru/qa_guru_14_10/issues/2")
     void issueTitleShouldBeVisibleWithLambdaStepsTest() {
         step("Открываем репозиторий qa_guru_14_10", () -> {
             open(REPOSITORY_URL);
@@ -48,6 +64,9 @@ public class GitHubIssueTests extends AllureTestBase {
 
     @Test
     @DisplayName("Проверка названия Issue через аннотацию @Step")
+    @Story("Проверка названия Issue")
+    @Severity(SeverityLevel.CRITICAL)
+    @Link(name = "Issue #2", url = "https://github.com/qa-guru/qa_guru_14_10/issues/2")
     void issueTitleShouldBeVisibleWithAnnotatedStepsTest() {
         steps.openRepository(REPOSITORY_URL);
         steps.openIssuesTab();
