@@ -1,5 +1,7 @@
 package tests.allure;
 
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Link;
 import io.qameta.allure.Owner;
@@ -15,6 +17,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
+@Epic("GitHub")
 @Feature("Issues в репозитории")
 @Owner("Олег Дунюшкин")
 @Link(name = "Репозиторий qa_guru_14_10", url = "https://github.com/qa-guru/qa_guru_14_10")
@@ -32,6 +35,7 @@ public class GitHubIssueTests extends AllureTestBase {
     @Story("Проверка названия Issue")
     @Severity(SeverityLevel.CRITICAL)
     @Link(name = "Issue #2", url = "https://github.com/qa-guru/qa_guru_14_10/issues/2")
+    @Description("Проверяем, что в репозитории qa_guru_14_10 открывается Issue #2 с ожидаемым названием.")
     void issueTitleShouldBeVisibleWithSelenideTest() {
         open(REPOSITORY_URL);
         $("#issues-tab").shouldBe(visible).click();
@@ -44,6 +48,7 @@ public class GitHubIssueTests extends AllureTestBase {
     @Story("Проверка названия Issue")
     @Severity(SeverityLevel.CRITICAL)
     @Link(name = "Issue #2", url = "https://github.com/qa-guru/qa_guru_14_10/issues/2")
+    @Description("Проверяем, что в репозитории qa_guru_14_10 открывается Issue #2 с ожидаемым названием.")
     void issueTitleShouldBeVisibleWithLambdaStepsTest() {
         step("Открываем репозиторий qa_guru_14_10", () -> {
             open(REPOSITORY_URL);
@@ -67,6 +72,7 @@ public class GitHubIssueTests extends AllureTestBase {
     @Story("Проверка названия Issue")
     @Severity(SeverityLevel.CRITICAL)
     @Link(name = "Issue #2", url = "https://github.com/qa-guru/qa_guru_14_10/issues/2")
+    @Description("Проверяем, что в репозитории qa_guru_14_10 открывается Issue #2 с ожидаемым названием.")
     void issueTitleShouldBeVisibleWithAnnotatedStepsTest() {
         steps.openRepository(REPOSITORY_URL);
         steps.openIssuesTab();
