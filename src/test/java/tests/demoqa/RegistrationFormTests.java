@@ -1,10 +1,18 @@
 package tests.demoqa;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.demoqa.data.RegistrationFormTestData;
 import tests.demoqa.pages.MainPage;
 import tests.demoqa.pages.RegistrationFormPage;
 
+@Owner("Oleg Dunyushkin")
+@Feature("DemoQA")
+@Story("Форма регистрации")
+@DisplayName("Тесты формы регистрации DemoQA")
 public class RegistrationFormTests extends TestBase {
 
     private final RegistrationFormTestData testData = new RegistrationFormTestData();
@@ -12,6 +20,7 @@ public class RegistrationFormTests extends TestBase {
     private final RegistrationFormPage registrationFormPage = new RegistrationFormPage();
 
     @Test
+    @DisplayName("Отправка формы с обязательными полями")
     void requiredFieldsTest() {
         registrationFormPage.openPage()
                 .setFirstName(testData.firstName)
@@ -24,6 +33,7 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Переход на страницу формы регистрации")
     void moveToFormTest() {
         mainPage.openPage()
                 .openPracticeFormPage()
@@ -31,6 +41,7 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Валидация формы без заполненных полей")
     void noFieldsTest() {
         registrationFormPage.openPage()
                 .submit()
@@ -38,6 +49,7 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Валидация поля email")
     void wrongEmailTest() {
         registrationFormPage.openPage()
                 .setFirstName(testData.firstName)
@@ -50,6 +62,7 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Валидация поля телефона")
     void lettersPhoneTest() {
         registrationFormPage.openPage()
                 .setFirstName(testData.firstName)
@@ -62,6 +75,7 @@ public class RegistrationFormTests extends TestBase {
     }
 
     @Test
+    @DisplayName("Полная отправка формы с тестовыми данными")
     void maximumHappyPathTest() {
         registrationFormPage.openPage()
                 .setFirstName(testData.firstName)
