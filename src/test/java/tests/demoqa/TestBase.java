@@ -20,7 +20,7 @@ public class TestBase {
     static void beforeAll() {
         Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
         Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = getBrowserVersion();
+        Configuration.browserVersion = System.getProperty("browserVersion", "148.0");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
 
@@ -55,15 +55,5 @@ public class TestBase {
             }
             closeWebDriver();
         }
-    }
-
-    private static String getBrowserVersion() {
-        String customBrowserVersion = System.getProperty("customBrowserVersion", "");
-
-        if (!customBrowserVersion.isBlank()) {
-            return customBrowserVersion;
-        }
-
-        return System.getProperty("browserVersion", "148.0");
     }
 }
