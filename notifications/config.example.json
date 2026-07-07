@@ -1,0 +1,15 @@
+{
+  "base": {
+    "project": "QA.GURU UI tests",
+    "environment": "demoqa",
+    "comment": "Результаты запуска автотестов",
+    "reportLink": "https://jenkins.autotests.cloud/job/example/1/allure/",
+    "language": "ru",
+    "allureFolder": "allure-report",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "telegram_bot_token",
+    "chat": "telegram_chat_id"
+  }
+}
